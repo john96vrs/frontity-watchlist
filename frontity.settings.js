@@ -9,43 +9,61 @@ const settings = {
   },
   "packages": [
     {
-      "name": "@frontity/mars-theme",
+      "name": "my-first-theme",
       "state": {
         "theme": {
-          "menu": [
-            [
-              "Home",
-              "/"
-            ],
-            [
-              "Nature",
-              "/category/nature/"
-            ],
-            [
-              "Travel",
-              "/category/travel/"
-            ],
-            [
-              "Japan",
-              "/tag/japan/"
-            ],
-            [
-              "About Us",
-              "/about-us/"
-            ]
-          ],
-          "featured": {
-            "showOnList": false,
-            "showOnPost": false
-          }
-        }
+        "featured": {
+          "showOnList": true,
+          "showOnPost": true
+        },
+        
+      }
       }
     },
     {
       "name": "@frontity/wp-source",
       "state": {
+        
         "source": {
-          "url": "https://test.frontity.org"
+          
+          "url": "http://wordpress.vrs/" ,
+          "params": {
+            "per_page": 100
+          },
+          
+           "postTypes":[
+            	{
+              type: "filme",
+              endpoint: "filme",
+              archive: "/filme"
+             },
+             {
+              type: "post",
+              endpoint: "posts",
+              archive: "/posts"
+             },
+             {
+              type: "watchlist",
+              endpoint: "watchlist",
+              archive: "/watchlist"
+             },
+             {
+              type: "filmreview",
+              endpoint: "filmreview",
+              archive: "/reviews"
+             },
+             {
+              type: "serie",
+              endpoint: "serie",
+              archive: "/serie"
+             },
+             {
+              type: "popular_movies",
+              endpoint: "popular_movies",
+              archive: "/popular_movies"
+              
+             },
+          ] 
         }
       }
     },

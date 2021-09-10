@@ -32,6 +32,7 @@
     "bootstrapp": "0.0.0",
     "framer-motion": "^4.1.17",
     "frontity": "^1.16.0",
+    "mars-theme": "file:packages/mars-theme",
     "my-first-theme": "file:packages/my-first-theme",
     "react-bootstrap": "^1.6.1",
     "react-html-parser": "^2.0.2",

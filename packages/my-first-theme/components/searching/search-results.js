@@ -15,11 +15,8 @@ const SearchResults = ({ actions, state }) => {
   const isEmpty = data.total === 0;
 
   useEffect(async () => {
-    actions.source.fetch(data, { force: true });
-    actions.source.fetch("/home", { force: true });
-    actions.source.fetch("/filme", { force: true });
-    actions.source.fetch("/posts", { force: true });
-    actions.source.fetch("/serie", { force: true });
+    actions.source.fetch(state.router.link, { force: true });
+    
   })
 
   return (

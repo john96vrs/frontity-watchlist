@@ -20,14 +20,11 @@ const homeHandler = {
 }
 
 const searchUrls = {
-  priority: 1,
-  pattern: "/?s=popular_movies",
+  pattern: "/multiple-post-type",
   func: async ({ link, params, state, libraries, force }) => {
-    const { query } = libraries.source.parse(link);
-
     const response = await libraries.source.api.get({
-      endpoint: "popular_movies",
-      params: { search: query.s }
+      endpoint: "multiple-post-type",
+      params: { search: params.search, type : 'popular_movies',}
     });
 
     const items = await libraries.source.populate({

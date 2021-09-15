@@ -56,3 +56,5 @@ macOS .DS_Store files
 
 # Frontity
 build
+
+packages/mars-theme

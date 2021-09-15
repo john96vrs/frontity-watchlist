@@ -16,12 +16,12 @@ const SearchForm = ({ state, actions, libraries }) => {
     // Get the input's value
     const searchString = inputRef.current.value;
 
-    // If the typed search string is not empty
+    // If the typed search string is no t empty
     // Better to trim write spaces as well
     if (searchString.trim().length > 0) {
-      // Let's go search for blogs that match the search string
-      //actions.router.set(`/?s=${searchString.toLowerCase()}`);
-      actions.router.set(`/multiple-post-type?search=${searchString.toLowerCase()}`);
+      // Let's go search for blogs t-phat match the search string
+      actions.router.set(`/popular_movies/${searchString.toLowerCase()}`);
+      //actions.router.set(`multiple-post-type?search=${searchString.toLowerCase()}`);
       // Scroll the page to the top
       window.scrollTo(0, 0);
 

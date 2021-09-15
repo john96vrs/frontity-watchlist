@@ -1,17 +1,14 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { connect, styled } from "frontity";
-import Link from "./link";
-import List from "./list";
-import FeaturedMedia from "./featured-media";
 import Add from "./add";
 import Image from "@frontity/components/image";
 
-const Filme = ({ state, actions, libraries }) => {
+const Filme = ({ state, libraries }) => {
   // Get information about the current URL.
   const data = state.source.get(state.router.link);
   // Get the data of the post.
   const filme = state.source[data.type][data.id];
-  const {link, filmtitle, overview ,date, poster, vote, votinrate, release} = filme
+  const { poster } = filme
 
   // Get the html2react component.
   const Html2React = libraries.html2react.Component;
@@ -27,11 +24,11 @@ const Filme = ({ state, actions, libraries }) => {
 
     <Container type={data.type}>
       <div className="row">
-        <div className="col-md-4 mx-5">
+        <div className="col-md-4 mx-md-5 px-0">
           {/* Look at the settings to see if we should include the featured image */}
             <StyledImage src={"https://image.tmdb.org/t/p/w400" + poster}/>
         </div>
-        <div className="col-md-6 text-center">
+        <div className="col-md-6">
           <Title dangerouslySetInnerHTML={{ __html: filme.filmtitle}} />
           <p>{"voting count: " +filme.vote}</p>
           <p>{"average voting rate: "+ filme.votinrate}</p>
@@ -40,10 +37,10 @@ const Filme = ({ state, actions, libraries }) => {
         {/* Render the content using the Html2React component so the HTML is processed
         by the processors we included in the libraries.html2react.processors array. */}
         <Content>
-          <h2>story</h2>
-          <Html2React html={filme.overview} />
+          <Title>story</Title>
+          <p><Html2React html={filme.overview} /> </p>
         </Content>
-        <div className="container-fluid"> <Add /> </div>
+        <Add />
       </div>
      </div>
     </Container>
@@ -53,27 +50,20 @@ const Filme = ({ state, actions, libraries }) => {
 
 export default connect(Filme);
 
-const SubTitle = styled.h3`
-  margin: 0;
-  margin-bottom: 8px;
-`;
-
 const StyledImage = styled(Image)`
   display: block;
-  object-fit: cover;
+  max-width: 100%;  
+  height: auto;
 `;
 
 const Container = styled.div`
-  width: 1200px;
-  margin:  0 auto;
+  max-width: 1200px;
   margin-top: 2rem;
-  padding: 40px;
-
 `;
 
   const Title = styled.h1`
-  margin: 0;
-  margin-bottom: 8px;
+    margin: 0;
+    margin-bottom: 8px;
 `;
 
 /**
@@ -81,106 +71,11 @@ const Container = styled.div`
  * selectors to style that HTML.
  */
  const Content = styled.div`
-
- margin: 1rem;
-
- word-break: break-word;
- * {
-   max-width: 100%;
- }
- p {
-   line-height: 1.6em;
- }
- img {
-   width:300px
- }
- figure {
-   margin: 24px auto;
-   /* next line overrides an inline style of the figure element. */
-   width: 100% !important;
-   figcaption {
-     font-size: 0.7em;
-   }
- }
- iframe {
-   display: block;
-   margin: auto;
- }
- blockquote {
-   margin: 16px 0;
-   background-color: rgba(0, 0, 0, 0.1);
-   border-left: 4px solid rgba(12, 17, 43);
-   padding: 4px 16px;
- }
- a {
-   color: rgb(31, 56, 197);
-   text-decoration: underline;
- }
- /* Input fields styles */
- input[type="text"],
- input[type="email"],
- input[type="url"],
- input[type="tel"],
- input[type="number"],
- input[type="date"],
- textarea,
- select {
-   display: block;
-   padding: 6px 12px;
-   font-size: 16px;
-   font-weight: 400;
-   line-height: 1.5;
-   color: #495057;
-   background-color: #fff;
-   background-clip: padding-box;
-   border: 1px solid #ced4da;
-   border-radius: 4px;
-   outline-color: transparent;
-   transition: outline-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-   margin: 8px 0 4px 0;
-   &:focus {
-     outline-color: #1f38c5;
-   }
- }
- input[type="submit"] {
-   display: inline-block;
-   margin-bottom: 0;
-   font-weight: 400;
-   text-align: center;
-   white-space: nowrap;
-   vertical-align: middle;
-   -ms-touch-action: manipulation;
-   touch-action: manipulation;
-   cursor: pointer;
-   background-image: none;
-   border: 1px solid #1f38c5;
-   padding: 12px 36px;
-   font-size: 14px;
-   line-height: 1.42857143;
-   border-radius: 4px;
-   color: #fff;
-   background-color: #1f38c5;
- }
- /* WordPress Core Align Classes */
- @media (min-width: 420px) {
-   img.aligncenter,
-   img.alignleft,
-   img.alignright {
-     width: auto;
-   }
-   .aligncenter {
-     display: block;
-     margin-left: auto;
-     margin-right: auto;
-   }
-   .alignright {
-     float: right;
-     margin-left: 24px;
-   }
-   .alignleft {
-     float: left;
-     margin-right: 24px;
-   }
- }
+  @media screen and (max-width: 600px) {
+    img {
+      float: left
+    }
+  }
+ 
 `;
 

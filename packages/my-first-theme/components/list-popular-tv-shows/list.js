@@ -5,16 +5,16 @@ import { connect, styled, decode } from "frontity"
 import Item from "./list-item"
 
 const List = ({ state }) => {
-  const data = state.source.get("/popular_movies")
+  const data = state.source.get('/serie/')
 
   return ( 
       <Container>
         {data.items.map(({type, id}) => {
             const item = state.source[type][id];
-            const {link, rating ,filmtitle, date, poster, content: { rendered: contentRendered }} = item
+            const {rating ,filmtitle, date, content: { rendered: contentRendered }} = item
             
             return (
-              <div className="col-md-2 px-0">
+              <div className="col-6 col-md-3 col-lg-2 px-0">
                 <div className="card">
                     <Item 
                         link={item.link}

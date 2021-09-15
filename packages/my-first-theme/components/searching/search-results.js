@@ -1,8 +1,7 @@
 import { connect, styled } from "frontity";
 import SearchForm from "./search-form";
 import React, { useEffect } from "react"
-
-const reverseFormat = (query) => query.replace("+", " ");
+import Link from "../link";
 
 const SearchResults = ({ actions, state }) => {
   
@@ -16,12 +15,10 @@ const SearchResults = ({ actions, state }) => {
 
   useEffect(async () => {
     actions.source.fetch(state.router.link, { force: true });
-    
   })
 
   return (
     <>
-        <span>{`“${reverseFormat(searchQuery)}”`}</span>
         <IntroText size="thin">
           {isEmpty ? (
             <Text>
@@ -43,10 +40,12 @@ const SearchResults = ({ actions, state }) => {
         </SearchContainer>
       ) : (
         <div>
-          {data.items.map((item) => {
+        {data.items.map((item) => {
             return (
               <div key={item.id}>
-                {item.type} – {item.id} – {item.link}
+                <Link link={item.link}>
+                  {item.link}
+                </Link> 
               </div>
             )
           })}

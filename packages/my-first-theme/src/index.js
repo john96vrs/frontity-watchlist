@@ -20,12 +20,12 @@ const homeHandler = {
 }
 
 const searchUrls = {
-  pattern: "/multiple-post-type",
+  pattern: "/?s:search",
   func: async ({ link, params, state, libraries, force }) => {
     const response = await libraries.source.api.get({
       endpoint: "multiple-post-type",
-      params: { search: params.search, type : 'popular_movies',}
-    });
+      params: { search: params.search, types: ["post", "popular_movies"]},
+    }); 
 
     const items = await libraries.source.populate({
       response,
@@ -33,11 +33,16 @@ const searchUrls = {
       force,
     });    
     
-    Object.assign(state.source.data[link], {
-      isSearchUrl: true,
-      //add queried posts to data
+    //3. add link to data
+    const currentPageData = state.source.data[link];
+    const newPageData = {
       items,
-    });
+      // isPostTypeArchive: true,
+      isFetching: currentPageData.isFetching,
+      isReady: currentPageData.isReady,
+      ...(params.search && { isSearch: true, searchQuery: params.search }),
+    };
+    Object.assign(currentPageData, newPageData);
 
   }
 }
@@ -69,7 +74,7 @@ const myFirstTheme = {
       init: ({ libraries }) => {
         libraries.source.handlers.push(loginHandler);
         libraries.source.handlers.push(homeHandler);
-        libraries.source.handlers.push(searchUrls);
+          libraries.source.handlers.push(searchUrls);
       },
 
       openMobileMenu: ({ state }) => {
@@ -86,6 +91,9 @@ const myFirstTheme = {
     },
   },
   libraries: {
+    source: {
+      normalize: (link) => link.replace(/\/($|\?|#)/, "")
+    },
     html2react: {
       processors: [link]
     }

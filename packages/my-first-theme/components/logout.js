@@ -1,6 +1,5 @@
-import React, { useState } from "react"
+import React from "react"
 import { connect, styled } from "frontity"
-import Link from "@frontity/components/link"
 
 const Logout = () => {
     const username = typeof window !== 'undefined' ? sessionStorage.getItem("username") : null;
@@ -11,11 +10,17 @@ const Logout = () => {
     }
 
     return (
-       <div>
+       <LogoutButton className="logout-btn">
           { username ==  null ? null :  <button className="btn btn-warning" onClick={handleDelete}> Logout </button> }  
-       </div> 
+       </LogoutButton> 
     )
 }
 
 
 export default connect(Logout)
+
+const LogoutButton = styled.div`
+  @media screen and (max-width: 600px) { 
+    margin-top: 1rem
+  }
+`;

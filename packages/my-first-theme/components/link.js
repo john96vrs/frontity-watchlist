@@ -1,5 +1,5 @@
 import React from "react";
-import { connect } from "frontity";
+import { connect, styled } from "frontity";
 
 const Link = ({
   state,
@@ -39,3 +39,13 @@ const Link = ({
 };
 
 export default connect(Link);
+
+/* const MenuLink = styled(Link)`
+  display: block;
+  line-height: 1.2;
+  text-decoration: none;
+  &:hover,
+  &[aria-current="page"] {
+    text-decoration: underline;
+  } 
+`*/

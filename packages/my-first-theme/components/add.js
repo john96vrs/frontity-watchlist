@@ -1,11 +1,10 @@
 import React, {useState, useEffect} from "react";
-import { connect } from "frontity";
+import { connect, styled } from "frontity";
 import { fetch } from "frontity";
 
 const Add = ({ state },props) => {
     const data = state.source.get(state.router.link)
     const filme = state.source[data.type][data.id]
-    const {link, filmtitle, overview ,date, poster, vote, votinrate, release} = filme
     
     const [btnText, changeBtnText] = useState("Add to Watchlist")
     const [isAdded, updateAdded] = useState(false);
@@ -60,12 +59,16 @@ const Add = ({ state },props) => {
    
 
     return (
-        <div>
+        <Button>
             <button disabled= {isDisabled} type="submit" onClick={handleSubmit} className={ isAdded ? "btn btn-success"  : "btn btn-primary"}>
                 {btnText}
             </button>
-        </div>
+        </Button>
         )
     }        
 
 export default connect(Add);
+
+const Button = styled.div`
+  margin-top: 1rem
+`;

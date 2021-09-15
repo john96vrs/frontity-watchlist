@@ -53,6 +53,11 @@ const settings = {
               archive: "/reviews"
              },
              {
+              type: "multiple-post-type",
+              endpoint: "multiple-post-type",
+              archive: "/multiple-post-type"
+             },
+             {
               type: "serie",
               endpoint: "serie",
               archive: "/serie"

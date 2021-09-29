@@ -28,7 +28,7 @@ const Login = ({ state, libraries, actions  }) => {
 
  const getToken = async (event) => {
   event.preventDefault();
-     const response = await fetch("http://wordpress.vrs/wp-json/jwt-auth/v1/token",{ 
+     const response = await fetch("https://johndiesattheend.de/wp-json/jwt-auth/v1/token",{ 
      method: 'POST', // or 'PUT'
      headers: {
      'Content-Type': 'application/json',

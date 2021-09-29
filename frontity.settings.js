@@ -12,6 +12,7 @@ const settings = {
       "name": "my-first-theme",
       "state": {
         "theme": {
+          autoPrefetch: "hover",
         "featured": {
           "showOnList": true,
           "showOnPost": true
@@ -26,7 +27,7 @@ const settings = {
         
         "source": {
           
-          "url": "http://wordpress.vrs/" ,
+          "url": "https://johndiesattheend.de/" ,
           "params": {
             "per_page": 100
           },

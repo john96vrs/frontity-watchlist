@@ -44,6 +44,9 @@ const GlobalStyles = () => {
           @media screen and (max-width: 600px) { 
             .navbar {
               text-align: left;
+
+              .navbar-nav { margin-top: 1rem }
+              
             }
 
           @media (min-width: 1200px) {

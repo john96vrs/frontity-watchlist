@@ -2,6 +2,7 @@ import React from "react";
 import { connect, styled } from "frontity";
 import Add from "./add";
 import Image from "@frontity/components/image";
+import Notification from './notification';
 
 const Filme = ({ state, libraries }) => {
   // Get information about the current URL.
@@ -43,6 +44,7 @@ const Filme = ({ state, libraries }) => {
         <Add />
       </div>
      </div>
+     <Notification />
     </Container>
 
   ) : null;

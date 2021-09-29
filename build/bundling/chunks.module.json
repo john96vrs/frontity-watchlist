@@ -1,0 +1,85 @@
+{
+  "errors": [],
+  "warnings": [],
+  "hash": "c1294f5e1fc6d5ca57af",
+  "publicPath": "/static/",
+  "outputPath": "C:\\Users\\John\\Documents\\react-apps\\watchfront\\build\\static",
+  "assetsByChunkName": {
+    "list": "list.module.js",
+    "react-wordpress-project": "react-wordpress-project.module.js"
+  },
+  "assets": [
+    {
+      "name": "images/jpd-fahne.svg",
+      "size": 884,
+      "chunks": [],
+      "chunkNames": [],
+      "info": {
+        "sourceFilename": "packages/my-first-theme/src/assets/jpd-fahne.svg"
+      },
+      "emitted": false
+    },
+    {
+      "name": "list.module.js",
+      "size": 121819,
+      "chunks": [
+        "list"
+      ],
+      "chunkNames": [
+        "list"
+      ],
+      "info": {},
+      "emitted": false
+    },
+    {
+      "name": "react-wordpress-project.module.js",
+      "size": 14058827,
+      "chunks": [
+        "react-wordpress-project"
+      ],
+      "chunkNames": [
+        "react-wordpress-project"
+      ],
+      "info": {},
+      "emitted": false
+    }
+  ],
+  "filteredAssets": 0,
+  "namedChunkGroups": {
+    "react-wordpress-project": {
+      "chunks": [
+        "react-wordpress-project"
+      ],
+      "assets": [
+        "react-wordpress-project.module.js"
+      ],
+      "children": {},
+      "childAssets": {}
+    },
+    "list": {
+      "chunks": [
+        "list"
+      ],
+      "assets": [
+        "list.module.js"
+      ],
+      "children": {},
+      "childAssets": {}
+    }
+  },
+  "generator": "loadable-components",
+  "chunks": [
+    {
+      "id": "list",
+      "files": [
+        "list.module.js"
+      ]
+    },
+    {
+      "id": "react-wordpress-project",
+      "files": [
+        "react-wordpress-project.module.js"
+      ]
+    }
+  ]
+}

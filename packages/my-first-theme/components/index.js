@@ -36,7 +36,7 @@ const Root = ({ state }) => {
           <Login when={data.isLogin} />
           <Home when={data.isHome} /> 
           {/* <SearchResults when={isSearch || data.isSearchUrl} /> */}
-          <ListFilme when={data.isFilmeArchive} />
+        
           <ListPopularTvShows when={data.isSerieArchive} />
           <ListPopular when={data.isPopularMoviesArchive} />
           <ListWatchlist when={data.isWatchlistArchive} />
@@ -46,11 +46,12 @@ const Root = ({ state }) => {
           <Page when={data.isPage} />
           <Error when={data.isError} />
         </Switch> 
+        <Switch> 
+        <Footer when={ link == "/" || link == "/watchlist/" || link == "/login/"}/>
+        </Switch>
       </main>
       { /* link == "/popular_movies/" || "/serie/" ? null : <Footer /> */}
-      <Switch> 
-        <Footer when={ link == "/" || link == "/watchlist/" || link == "/login/"}/>
-      </Switch>
+    
       
     </>
   )

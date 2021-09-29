@@ -7,28 +7,28 @@ import ListSerie from "./list-serie";
 import Switch from "@frontity/components/switch";
 
 const Home = ({ state, actions }) => {
-  const data = state.source.get("/filme"); 
-  const serie = state.source.get("/serie")
-  const username = typeof window !== 'undefined' ? sessionStorage.getItem("username") : null;
-
   useEffect(async () => {
     actions.source.fetch("/home", { force: true });
     actions.source.fetch("/filme", { force: true });
     actions.source.fetch("/posts", { force: true });
     actions.source.fetch("/serie", { force: true });
-  })
-  
+  }) 
+
+  const data = state.source.get("/filme"); 
+  const serie = state.source.get("/serie")
+  const username = typeof window !== 'undefined' ? sessionStorage.getItem("username") : null;
+
   return (
     <Container>
       <div>
         <div>
           <Welcome>Willkommen {username}</Welcome>
-          <Title>Movie Trends this week</Title>
+          <Title>Filme im Trend</Title>
         </div>
         <Switch> 
           <ListFilme when={data.isFilmeArchive} />
         </Switch>  
-        <Title>TV Shows Trends this week</Title>
+        <Title>Serien im Trend</Title>
         <Switch> 
           <ListSerie when={serie.isSerieArchive} />
         </Switch> 

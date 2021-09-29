@@ -28,7 +28,7 @@ const Add = ({ state },props) => {
     const handleSubmit = async (event) => {
         const authToken = sessionStorage.getItem("token");
 
-        const response =  await fetch("http://wordpress.vrs/wp-json/wp/v2/watchlist/",{ 
+        const response =  await fetch("https://johndiesattheend.de/wp-json/wp/v2/watchlist/",{ 
             method: 'POST', // or 'PUT'
             mode:'cors',
             headers: {

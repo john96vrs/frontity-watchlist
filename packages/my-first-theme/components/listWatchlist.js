@@ -5,11 +5,12 @@ import { connect, styled } from "frontity"
 import { fetch } from "frontity";
 import Image from "@frontity/components/image";
 import DeleteIcon from '@material-ui/icons/Delete'
+import Notification from './notification';
+import notificationService from './notificationService';
 
 const ListWatchlist = ({ state, libraries, actions }) => {
   const data = state.source.get(state.router.link);
   const [list,deleteItem] = useState(data.items);
-  const Html2React = libraries.html2react.Component;
   const username = typeof window !== 'undefined' ? sessionStorage.getItem("username") : null;
 
   useEffect(async () => {
@@ -18,9 +19,10 @@ const ListWatchlist = ({ state, libraries, actions }) => {
   
   return (
     <div>
-       <h1 className="my-3 mx-4">My Watchlist</h1>
+       { username == null ? null: <h1 className="my-3 mx-4">{username}`s Watchlist</h1>  }
       <Container>
-      <div> {username == null ? <p>You have to log in to see your watchlist. You can register <a href="http://wordpress.vrs/">here.</a> </p>: null} </div>
+      <Notification />
+      <div> {username == null ? <p>Um auf deine Watchlist zugreifen zu können, melden Sie sich bitte an. Du hast kein Konto?<a href="http://wordpress.vrs/"> Registrieren</a> </p>: null} </div>
         {list.map((item) => {
           const post = state.source[item.type][item.id]
           const author = state.source.author[post.author]
@@ -29,7 +31,7 @@ const ListWatchlist = ({ state, libraries, actions }) => {
               const deleteFilm = async (id) => {
                   const authToken = sessionStorage.getItem("token");
                  
-                  const response = await fetch("http://wordpress.vrs/wp-json/wp/v2/watchlist/" + item.id ,{ 
+                  const response = await fetch("https://johndiesattheend.de/wp-json/wp/v2/watchlist/" + item.id ,{ 
                       method: 'DELETE', // or 'PUT'
                       mode: 'cors',
                       headers: {
@@ -41,6 +43,7 @@ const ListWatchlist = ({ state, libraries, actions }) => {
                   .then(filmejs => {
                   
                       console.log('Deleted:', filmejs);
+                      notificationService.open(filmejs.message);
                   })
         
                   .catch((error) => {
@@ -57,7 +60,7 @@ const ListWatchlist = ({ state, libraries, actions }) => {
 
           if(author.name == username)   {
             return ( 
-              <div key={item.id} className="col-md-2 px-0">
+              <div key={item.id} className="col-6 col-md-2 px-1">
                 <div className="card border-0">
                 <button onClick={ () => {deleteFilm(item.id)}}> <DeleteIcon/> </button>
                   <StyledImage src={"https://image.tmdb.org/t/p/w200/" + post.title.rendered }/> 
@@ -69,7 +72,7 @@ const ListWatchlist = ({ state, libraries, actions }) => {
             )
           }
         })}
-      
+        
       </Container>
     
     </div>  

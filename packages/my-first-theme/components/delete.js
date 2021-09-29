@@ -2,6 +2,8 @@ import React, {useState, useEffect} from "react";
 import { connect } from "frontity";
 import { fetch } from "frontity";
 import DeleteIcon from '@material-ui/icons/Delete'
+import notificationService from './notificationService';
+import Notification from './notification';
 
 const Delete = ({ state }, props) => {
     const authToken = sessionStorage.getItem("token");
@@ -9,7 +11,7 @@ const Delete = ({ state }, props) => {
     function handleDelete() {
        
             useEffect(() => {
-                fetch("http://wordpress.vrs/wp-json/wp/v2/watchlist/" + props.id ,{ 
+                fetch("https://johndiesattheend.de/wp-json/wp/v2/watchlist/" + props.id ,{ 
                     method: 'DELETE', // or 'PUT'
                     mode: 'cors',
                     headers: {
@@ -21,6 +23,8 @@ const Delete = ({ state }, props) => {
                 .then(filmejs => {
                 
                     console.log('Deleted:', filmejs);
+                    notificationService.open(filmejs.message);
+                   
                 })
 
                 .catch((error) => {
@@ -35,7 +39,11 @@ const Delete = ({ state }, props) => {
     }
 
     return (
-        <button onClick={handleClick}> <DeleteIcon/></button>
+        <div>
+            <button onClick={handleClick}> <DeleteIcon/></button>
+            <Notification/>
+        
+        </div>
     )
   
 };

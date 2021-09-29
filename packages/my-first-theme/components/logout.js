@@ -11,7 +11,7 @@ const Logout = () => {
 
     return (
        <LogoutButton className="logout-btn">
-          { username ==  null ? null :  <button className="btn btn-warning" onClick={handleDelete}> Logout </button> }  
+          { username ==  null ? null :  <button className="btn btn-warning" onClick={handleDelete}> Abmelden </button> }  
        </LogoutButton> 
     )
 }

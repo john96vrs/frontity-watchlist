@@ -53,3 +53,9 @@ macOS .DS_Store files
 .yarn/build-state.yml
 .yarn/install-state.gz
 .pnp.*
+
+# Frontity
+build
+
+packages/mars-theme
+.vercel

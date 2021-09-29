@@ -61,7 +61,7 @@ const myFirstTheme = {
   },
   actions: {
     theme: {
-      afterCSR: async ({ state, actions }) => {
+     /*  afterCSR: async ({ state, actions }) => {
         setInterval(() => {
           actions.source.fetch(state.router.link, { force: true });
         }, 5000);
@@ -69,7 +69,7 @@ const myFirstTheme = {
      
       beforeSSR: async ({state, actions}) => { 
           await actions.source.fetch(state.router.link, { force: true });
-      },
+      }, */
 
       init: ({ libraries }) => {
         libraries.source.handlers.push(loginHandler);
